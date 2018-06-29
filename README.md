@@ -15,3 +15,32 @@
 2. Повторить код из уроков.
    И в теме написать: "Уроки посмотрел. Код повторил."
 3. Составить и скинуть в тему шпаргалку с базовыми рассмотренными командами и сниппетами при использовании RedBean orm.
+
+БАЗОВЫЕ КОМАНДЫ В REDBEAN ORM:
+
+Подключение RedBeanOrm и хостинга к базе данных
+require "libs/rb-mysql.php";
+R::setup('mysql:host=localhost;dbname=school', 'root', '');
+
+Подключение базы данных к проекту
+require "db.php";
+
+Создание записи в базе данных
+$course = R::dispense('courses');
+$course->title = "Курс по React";
+
+Метод сохранения записи в базе данных (при обновлении и создании записи)
+R::store($course);
+
+Метод вывода записи из базы данных
+$courses = R::find('courses');
+print_r( $courses );
+
+Обновление записи в базе данных
+$course = R::load('courses', 2);
+$course->homeworks = 5;
+
+Удаление записи в базе данных
+$course = R::load('courses', 2);
+R::trash($course);
+
